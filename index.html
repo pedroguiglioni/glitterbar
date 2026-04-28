@@ -28,382 +28,178 @@
     --font-display: 'Playfair Display', serif;
     --font-body: 'DM Sans', sans-serif;
   }
-
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior:smooth; }
   body { font-family:var(--font-body); color:var(--texto); background:var(--blanco); overflow-x:hidden; }
 
-  /* ── PARTÍCULAS DE FONDO ── */
-  .sparkles {
-    position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;
-  }
-  .sparkle {
-    position:absolute; border-radius:50%;
-    animation:float linear infinite;
-    opacity:0;
-  }
+  /* PARTÍCULAS */
+  .sparkles { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+  .sparkle { position:absolute; border-radius:50%; animation:float linear infinite; opacity:0; }
   @keyframes float {
     0% { transform:translateY(100vh) rotate(0deg); opacity:0; }
-    10% { opacity:.6; }
-    90% { opacity:.3; }
+    10% { opacity:.6; } 90% { opacity:.3; }
     100% { transform:translateY(-100px) rotate(720deg); opacity:0; }
   }
 
-  /* ── NAV ── */
+  /* NAV */
   nav {
     position:fixed; top:0; left:0; right:0; z-index:100;
-    background:rgba(13,13,18,.95); backdrop-filter:blur(12px);
+    background:rgba(13,13,18,.96); backdrop-filter:blur(12px);
     border-bottom:1px solid rgba(233,30,140,.2);
     padding:0 2rem; display:flex; align-items:center;
     justify-content:space-between; height:64px;
   }
-  .nav-logo {
-    font-family:var(--font-display); font-size:1.5rem; font-weight:900;
-    font-style:italic; color:var(--blanco); text-decoration:none;
-    display:flex; align-items:center; gap:.5rem;
-  }
+  .nav-logo { font-family:var(--font-display); font-size:1.45rem; font-weight:900; font-style:italic; color:var(--blanco); text-decoration:none; display:flex; align-items:center; gap:.5rem; }
   .nav-logo .glow { color:var(--fucsia); text-shadow:0 0 20px rgba(233,30,140,.8); }
-  .nav-links { display:flex; gap:1.75rem; list-style:none; align-items:center; }
-  .nav-links a {
-    font-size:.82rem; font-weight:500; letter-spacing:1.5px; text-transform:uppercase;
-    color:rgba(255,255,255,.6); text-decoration:none; transition:color .2s;
-  }
+  .nav-links { display:flex; gap:1.5rem; list-style:none; align-items:center; }
+  .nav-links a { font-size:.8rem; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.6); text-decoration:none; transition:color .2s; }
   .nav-links a:hover { color:#fff; }
-  .nav-cta {
-    background:linear-gradient(135deg,var(--fucsia),var(--violeta));
-    color:#fff!important; padding:.38rem 1.1rem; border-radius:50px;
-    font-weight:600!important;
-  }
+  .nav-cta { background:linear-gradient(135deg,var(--fucsia),var(--violeta)); color:#fff!important; padding:.38rem 1.1rem; border-radius:50px; font-weight:600!important; }
   @media(max-width:768px){ .nav-links { display:none; } }
 
-  /* ── HERO ── */
+  /* HERO */
   #inicio {
     min-height:100vh; padding-top:64px;
-    background:radial-gradient(ellipse at 20% 50%, rgba(123,47,190,.4) 0%, transparent 60%),
-               radial-gradient(ellipse at 80% 20%, rgba(233,30,140,.3) 0%, transparent 60%),
-               radial-gradient(ellipse at 50% 80%, rgba(212,175,55,.15) 0%, transparent 60%),
+    background:radial-gradient(ellipse at 20% 50%,rgba(123,47,190,.4) 0%,transparent 60%),
+               radial-gradient(ellipse at 80% 20%,rgba(233,30,140,.3) 0%,transparent 60%),
+               radial-gradient(ellipse at 50% 80%,rgba(212,175,55,.15) 0%,transparent 60%),
                var(--negro);
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     position:relative; overflow:hidden; text-align:center;
   }
-  .hero-ring {
-    position:absolute; border-radius:50%; border:1px solid;
-    animation:ringPulse 4s ease-in-out infinite;
-  }
-  .hero-ring-1 { width:300px; height:300px; border-color:rgba(233,30,140,.2); animation-delay:0s; }
+  .hero-ring { position:absolute; border-radius:50%; border:1px solid; animation:ringPulse 4s ease-in-out infinite; }
+  .hero-ring-1 { width:300px; height:300px; border-color:rgba(233,30,140,.2); }
   .hero-ring-2 { width:500px; height:500px; border-color:rgba(123,47,190,.15); animation-delay:1s; }
   .hero-ring-3 { width:700px; height:700px; border-color:rgba(212,175,55,.1); animation-delay:2s; }
-  @keyframes ringPulse {
-    0%,100% { transform:scale(1); opacity:.5; }
-    50% { transform:scale(1.05); opacity:1; }
-  }
+  @keyframes ringPulse { 0%,100%{transform:scale(1);opacity:.5} 50%{transform:scale(1.05);opacity:1} }
   .hero-content { position:relative; z-index:1; padding:2rem 1.5rem; max-width:800px; }
-  .hero-badge {
-    display:inline-flex; align-items:center; gap:.5rem;
-    background:rgba(233,30,140,.15); border:1px solid rgba(233,30,140,.3);
-    color:var(--rosa); font-size:.75rem; font-weight:600; letter-spacing:2px;
-    text-transform:uppercase; padding:.38rem 1.1rem; border-radius:50px;
-    margin-bottom:2rem; backdrop-filter:blur(4px);
-  }
-  .hero-badge::before {
-    content:'✦'; color:var(--fucsia);
-    animation:spin 3s linear infinite; display:inline-block;
-  }
+  .hero-badge { display:inline-flex; align-items:center; gap:.5rem; background:rgba(233,30,140,.15); border:1px solid rgba(233,30,140,.3); color:var(--rosa); font-size:.72rem; font-weight:600; letter-spacing:2px; text-transform:uppercase; padding:.38rem 1.1rem; border-radius:50px; margin-bottom:1.75rem; }
+  .hero-badge::before { content:'✦'; color:var(--fucsia); animation:spin 3s linear infinite; display:inline-block; }
   @keyframes spin { to { transform:rotate(360deg); } }
-
-  .hero-logo-img {
-    width:160px; height:160px; object-fit:contain;
+  .hero-logo {
+    width:170px; height:170px; object-fit:contain;
     margin:0 auto 1.5rem; display:block;
-    filter:drop-shadow(0 0 30px rgba(233,30,140,.6)) drop-shadow(0 0 60px rgba(123,47,190,.4));
+    filter:drop-shadow(0 0 30px rgba(233,30,140,.7)) drop-shadow(0 0 60px rgba(123,47,190,.4));
     animation:logoPulse 3s ease-in-out infinite;
   }
   @keyframes logoPulse {
-    0%,100% { filter:drop-shadow(0 0 30px rgba(233,30,140,.6)) drop-shadow(0 0 60px rgba(123,47,190,.4)); }
-    50% { filter:drop-shadow(0 0 50px rgba(233,30,140,.9)) drop-shadow(0 0 80px rgba(123,47,190,.6)); }
+    0%,100%{filter:drop-shadow(0 0 30px rgba(233,30,140,.6)) drop-shadow(0 0 60px rgba(123,47,190,.4))}
+    50%{filter:drop-shadow(0 0 50px rgba(233,30,140,.9)) drop-shadow(0 0 80px rgba(123,47,190,.6))}
   }
-
-  .hero-title {
-    font-family:var(--font-display); font-size:clamp(3.5rem,10vw,7rem);
-    font-weight:900; font-style:italic; line-height:.9;
-    text-transform:none; letter-spacing:-1px; color:var(--blanco);
-    margin-bottom:.5rem;
-    text-shadow:0 0 40px rgba(233,30,140,.3);
-  }
-  .hero-title .bar {
-    background:linear-gradient(135deg,var(--fucsia),var(--dorado-light));
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-    background-clip:text;
-  }
-  .hero-sub {
-    font-size:.9rem; font-weight:500; letter-spacing:3px; text-transform:uppercase;
-    color:rgba(255,255,255,.4); margin-bottom:1rem;
-  }
-  .hero-slogan {
-    font-family:var(--font-display); font-style:italic;
-    font-size:clamp(1rem,2.5vw,1.3rem); color:rgba(255,255,255,.75);
-    line-height:1.7; margin-bottom:2.5rem; max-width:520px;
-    margin-left:auto; margin-right:auto;
-  }
-  .hero-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.5rem; }
-  .btn-main {
-    display:inline-flex; align-items:center; gap:.5rem;
-    background:linear-gradient(135deg,var(--fucsia),var(--violeta));
-    color:#fff; font-size:.9rem; font-weight:600; letter-spacing:1px;
-    padding:.9rem 2rem; border-radius:50px; text-decoration:none;
-    border:none; cursor:pointer;
-    box-shadow:0 4px 24px rgba(233,30,140,.4);
-    transition:transform .2s,box-shadow .2s;
-  }
+  .hero-title { font-family:var(--font-display); font-size:clamp(3.5rem,10vw,7rem); font-weight:900; font-style:italic; line-height:.9; color:var(--blanco); margin-bottom:.5rem; text-shadow:0 0 40px rgba(233,30,140,.3); }
+  .hero-title .bar { background:linear-gradient(135deg,var(--fucsia),var(--dorado-light)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { font-size:.88rem; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,.38); margin-bottom:.85rem; }
+  .hero-slogan { font-family:var(--font-display); font-style:italic; font-size:clamp(1rem,2.5vw,1.25rem); color:rgba(255,255,255,.72); line-height:1.75; margin-bottom:2.5rem; max-width:500px; margin-left:auto; margin-right:auto; }
+  .hero-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.25rem; }
+  .btn-main { display:inline-flex; align-items:center; gap:.5rem; background:linear-gradient(135deg,var(--fucsia),var(--violeta)); color:#fff; font-size:.9rem; font-weight:600; letter-spacing:1px; padding:.9rem 2rem; border-radius:50px; text-decoration:none; border:none; cursor:pointer; box-shadow:0 4px 24px rgba(233,30,140,.4); transition:transform .2s,box-shadow .2s; }
   .btn-main:hover { transform:translateY(-2px); box-shadow:0 8px 32px rgba(233,30,140,.5); }
-  .btn-ghost {
-    display:inline-flex; align-items:center; gap:.5rem;
-    background:transparent; color:#fff; font-size:.9rem; font-weight:600;
-    letter-spacing:1px; padding:.9rem 2rem; border-radius:50px;
-    text-decoration:none; border:1px solid rgba(255,255,255,.25);
-    cursor:pointer; transition:border-color .2s,background .2s;
-  }
-  .btn-ghost:hover { border-color:rgba(255,255,255,.6); background:rgba(255,255,255,.05); }
-  .hero-ig {
-    display:inline-flex; align-items:center; gap:.45rem;
-    color:rgba(255,255,255,.4); font-size:.8rem; font-weight:500;
-    letter-spacing:1.5px; text-transform:uppercase; text-decoration:none;
-    transition:color .2s;
-  }
+  .btn-ghost { display:inline-flex; align-items:center; gap:.5rem; background:transparent; color:#fff; font-size:.9rem; font-weight:600; letter-spacing:1px; padding:.9rem 2rem; border-radius:50px; text-decoration:none; border:1px solid rgba(255,255,255,.22); cursor:pointer; transition:border-color .2s,background .2s; }
+  .btn-ghost:hover { border-color:rgba(255,255,255,.55); background:rgba(255,255,255,.05); }
+  .hero-ig { display:inline-flex; align-items:center; gap:.45rem; color:rgba(255,255,255,.38); font-size:.78rem; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; text-decoration:none; transition:color .2s; }
   .hero-ig:hover { color:rgba(255,255,255,.85); }
-  .hero-stats {
-    position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%);
-    display:flex; gap:3rem; white-space:nowrap;
-  }
+  .hero-stats { position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%); display:flex; gap:2.75rem; white-space:nowrap; }
   .stat { text-align:center; }
-  .stat-n {
-    font-family:var(--font-display); font-size:2.2rem; font-weight:700;
-    display:block; line-height:1;
-    background:linear-gradient(135deg,var(--fucsia),var(--dorado-light));
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-  }
-  .stat-l { font-size:.65rem; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.35); font-weight:500; }
+  .stat-n { font-family:var(--font-display); font-size:2.2rem; font-weight:700; display:block; line-height:1; background:linear-gradient(135deg,var(--fucsia),var(--dorado-light)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .stat-l { font-size:.63rem; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.33); font-weight:500; }
 
-  /* ── SECCIONES GENERAL ── */
+  /* GENERAL */
   section { padding:5.5rem 1.5rem; position:relative; z-index:1; }
   .container { max-width:1080px; margin:0 auto; }
-  .section-label {
-    display:inline-flex; align-items:center; gap:.6rem;
-    font-size:.72rem; font-weight:600; letter-spacing:3px; text-transform:uppercase;
-    color:var(--fucsia); margin-bottom:.75rem;
-  }
-  .section-label::before { content:'✦'; font-size:.65rem; }
-  .section-title {
-    font-family:var(--font-display); font-size:clamp(2rem,5vw,3rem);
-    font-weight:900; font-style:italic; line-height:1;
-    color:var(--texto); margin-bottom:1.25rem;
-  }
+  .section-label { display:inline-flex; align-items:center; gap:.6rem; font-size:.7rem; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--fucsia); margin-bottom:.75rem; }
+  .section-label::before { content:'✦'; font-size:.62rem; }
+  .section-title { font-family:var(--font-display); font-size:clamp(2rem,5vw,3rem); font-weight:900; font-style:italic; line-height:1; color:var(--texto); margin-bottom:1.25rem; }
 
-  /* ── SERVICIOS ── */
+  /* SERVICIOS */
   #servicios { background:var(--gris-claro); }
-  .servicios-intro { font-size:1rem; color:var(--texto-suave); line-height:1.8; max-width:600px; margin-bottom:3rem; }
+  .servicios-intro { font-size:.95rem; color:var(--texto-suave); line-height:1.8; max-width:580px; margin-bottom:3rem; }
   .servicios-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
-  .servicio-card {
-    border-radius:16px; overflow:hidden; position:relative;
-    transition:transform .3s,box-shadow .3s;
-    box-shadow:0 4px 24px rgba(0,0,0,.08);
-  }
-  .servicio-card:hover { transform:translateY(-6px); box-shadow:0 16px 48px rgba(0,0,0,.12); }
-  .servicio-header {
-    padding:2.5rem 2rem 2rem;
-    position:relative; overflow:hidden;
-  }
-  .servicio-card:nth-child(1) .servicio-header {
-    background:linear-gradient(135deg,#0D0D12 0%,#1A0A2E 60%,#2D0A40 100%);
-  }
-  .servicio-card:nth-child(2) .servicio-header {
-    background:linear-gradient(135deg,#1A0A1E 0%,#2D1040 60%,#FF9EC7 100%);
-  }
-  .servicio-num {
-    position:absolute; top:1rem; right:1.25rem;
-    font-family:var(--font-display); font-size:5rem; font-weight:900;
-    opacity:.08; color:#fff; line-height:1; pointer-events:none;
-  }
-  .servicio-icon { font-size:2.5rem; margin-bottom:1rem; display:block; }
-  .servicio-nombre {
-    font-family:var(--font-display); font-size:1.8rem; font-weight:700;
-    font-style:italic; color:#fff; margin-bottom:.5rem; line-height:1.1;
-  }
-  .servicio-tag {
-    display:inline-block; background:rgba(255,255,255,.1); color:rgba(255,255,255,.7);
-    font-size:.7rem; font-weight:600; letter-spacing:2px; text-transform:uppercase;
-    padding:.25rem .8rem; border-radius:50px; border:1px solid rgba(255,255,255,.15);
-  }
+  .servicio-card { border-radius:16px; overflow:hidden; position:relative; transition:transform .3s,box-shadow .3s; box-shadow:0 4px 24px rgba(0,0,0,.08); }
+  .servicio-card:hover { transform:translateY(-6px); box-shadow:0 16px 48px rgba(0,0,0,.14); }
+  .servicio-img { width:100%; height:260px; object-fit:cover; display:block; }
+  .servicio-img-overlay { position:absolute; top:0; left:0; right:0; height:260px; background:linear-gradient(to bottom,rgba(13,13,18,.2) 0%,rgba(13,13,18,.7) 100%); display:flex; flex-direction:column; justify-content:flex-end; padding:1.5rem; }
+  .servicio-num { font-family:var(--font-display); font-size:3.5rem; font-weight:900; opacity:.15; color:#fff; line-height:1; position:absolute; top:.75rem; right:1.25rem; }
+  .servicio-icon { font-size:1.8rem; margin-bottom:.5rem; }
+  .servicio-nombre { font-family:var(--font-display); font-size:1.8rem; font-weight:700; font-style:italic; color:#fff; line-height:1.1; margin-bottom:.4rem; text-shadow:0 2px 8px rgba(0,0,0,.5); }
+  .servicio-tag { display:inline-block; background:rgba(233,30,140,.7); color:#fff; font-size:.68rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:.22rem .75rem; border-radius:50px; }
   .servicio-body { background:var(--blanco); padding:1.75rem 2rem; }
-  .servicio-desc { font-size:.95rem; color:var(--texto-suave); line-height:1.75; margin-bottom:1.25rem; }
+  .servicio-desc { font-size:.93rem; color:var(--texto-suave); line-height:1.75; margin-bottom:1.2rem; }
   .servicio-items { list-style:none; display:flex; flex-direction:column; gap:.5rem; margin-bottom:1.5rem; }
-  .servicio-items li { font-size:.9rem; color:var(--texto-suave); display:flex; align-items:center; gap:.65rem; }
-  .servicio-items li::before { content:'✦'; color:var(--fucsia); font-size:.6rem; flex-shrink:0; }
-  .btn-servicio {
-    display:inline-flex; align-items:center; gap:.5rem;
-    background:linear-gradient(135deg,var(--fucsia),var(--violeta));
-    color:#fff; font-size:.85rem; font-weight:600; letter-spacing:1px;
-    padding:.7rem 1.5rem; border-radius:50px; text-decoration:none;
-    border:none; cursor:pointer; transition:all .2s;
-    box-shadow:0 4px 16px rgba(233,30,140,.3);
-  }
+  .servicio-items li { font-size:.88rem; color:var(--texto-suave); display:flex; align-items:center; gap:.65rem; }
+  .servicio-items li::before { content:'✦'; color:var(--fucsia); font-size:.55rem; flex-shrink:0; }
+  .btn-servicio { display:inline-flex; align-items:center; gap:.5rem; background:linear-gradient(135deg,var(--fucsia),var(--violeta)); color:#fff; font-size:.82rem; font-weight:600; letter-spacing:1px; padding:.7rem 1.5rem; border-radius:50px; text-decoration:none; border:none; cursor:pointer; transition:all .2s; box-shadow:0 4px 16px rgba(233,30,140,.3); }
   .btn-servicio:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(233,30,140,.4); }
-  @media(max-width:700px){ .servicios-grid { grid-template-columns:1fr; } }
+  @media(max-width:700px){ .servicios-grid{grid-template-columns:1fr} }
 
-  /* ── GALERÍA ── */
+  /* GALERÍA */
   #galeria { background:var(--negro-suave); }
   #galeria .section-label { color:var(--rosa); }
   #galeria .section-title { color:var(--blanco); }
-  .galeria-tabs {
-    display:flex; gap:.75rem; margin-bottom:2rem; flex-wrap:wrap;
-  }
-  .tab-btn {
-    padding:.5rem 1.25rem; border-radius:50px; font-size:.8rem; font-weight:600;
-    letter-spacing:1px; text-transform:uppercase; cursor:pointer; border:none;
-    background:rgba(255,255,255,.07); color:rgba(255,255,255,.5);
-    transition:all .2s;
-  }
-  .tab-btn.active {
-    background:linear-gradient(135deg,var(--fucsia),var(--violeta));
-    color:#fff; box-shadow:0 4px 16px rgba(233,30,140,.3);
-  }
-  .galeria-grid {
-    display:grid; grid-template-columns:repeat(3,1fr); gap:1rem;
-  }
-  .galeria-item {
-    border-radius:12px; overflow:hidden; aspect-ratio:4/5;
-    background:linear-gradient(135deg,var(--fucsia-dark),var(--violeta));
-    position:relative; cursor:pointer;
-    transition:transform .3s;
-  }
+  .galeria-tabs { display:flex; gap:.75rem; margin-bottom:2rem; flex-wrap:wrap; }
+  .tab-btn { padding:.5rem 1.25rem; border-radius:50px; font-size:.78rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; cursor:pointer; border:none; background:rgba(255,255,255,.07); color:rgba(255,255,255,.5); transition:all .2s; }
+  .tab-btn.active { background:linear-gradient(135deg,var(--fucsia),var(--violeta)); color:#fff; box-shadow:0 4px 16px rgba(233,30,140,.3); }
+  .galeria-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+  .galeria-item { border-radius:12px; overflow:hidden; aspect-ratio:4/5; position:relative; cursor:pointer; transition:transform .3s; }
   .galeria-item:hover { transform:scale(1.03); }
-  .galeria-item img {
-    width:100%; height:100%; object-fit:cover;
-    transition:transform .4s;
-  }
+  .galeria-item img { width:100%; height:100%; object-fit:cover; transition:transform .4s; display:block; }
   .galeria-item:hover img { transform:scale(1.08); }
-  .galeria-item-overlay {
-    position:absolute; inset:0;
-    background:linear-gradient(to top,rgba(13,13,18,.6) 0%,transparent 60%);
-  }
-  /* Placeholders cuando no hay foto */
-  .galeria-placeholder {
-    width:100%; height:100%;
-    display:flex; flex-direction:column; align-items:center;
-    justify-content:center; gap:.5rem; padding:1rem; text-align:center;
-  }
-  .galeria-placeholder span { font-size:2rem; }
-  .galeria-placeholder p { font-size:.75rem; color:rgba(255,255,255,.5); }
-  .galeria-nota {
-    margin-top:1.5rem; text-align:center; font-size:.82rem;
-    color:rgba(255,255,255,.3); font-style:italic;
-  }
-  @media(max-width:600px){ .galeria-grid { grid-template-columns:repeat(2,1fr); } }
+  .galeria-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(13,13,18,.55) 0%,transparent 55%); }
+  .galeria-label { position:absolute; bottom:.75rem; left:.85rem; font-family:var(--font-display); font-style:italic; font-size:.9rem; font-weight:700; color:#fff; text-shadow:0 1px 4px rgba(0,0,0,.5); }
+  @media(max-width:600px){ .galeria-grid{grid-template-columns:repeat(2,1fr)} }
 
-  /* ── NOSOTROS ── */
+  /* NOSOTROS */
   #nosotros { background:var(--blanco); }
   .nosotros-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
   .nosotros-text p { font-size:1rem; color:var(--texto-suave); line-height:1.85; margin-bottom:1rem; }
-  .nosotros-frase {
-    font-family:var(--font-display); font-style:italic; font-size:1.4rem;
-    font-weight:700; line-height:1.35; margin-bottom:1.25rem;
-    background:linear-gradient(135deg,var(--fucsia),var(--violeta));
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-  }
+  .nosotros-frase { font-family:var(--font-display); font-style:italic; font-size:1.35rem; font-weight:700; line-height:1.35; margin-bottom:1.25rem; background:linear-gradient(135deg,var(--fucsia),var(--violeta)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
   .valores { display:flex; flex-direction:column; gap:.75rem; margin-top:1.5rem; }
   .valor { display:flex; align-items:center; gap:.85rem; padding:.85rem 1.1rem; background:var(--gris-claro); border-radius:10px; border-left:3px solid var(--fucsia); }
   .valor-ico { width:32px; height:32px; background:var(--fucsia-pale); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:.95rem; }
   .valor-txt { font-size:.9rem; font-weight:500; color:var(--texto); }
-  .nosotros-visual {
-    background:linear-gradient(135deg,var(--negro) 0%,var(--negro-suave) 100%);
-    border-radius:20px; padding:2.5rem; text-align:center;
-    border:1px solid rgba(233,30,140,.15);
-    box-shadow:0 20px 60px rgba(233,30,140,.1);
-  }
-  .neon-text {
-    font-family:var(--font-display); font-style:italic;
-    font-size:3.5rem; font-weight:900; line-height:1;
-    color:var(--fucsia);
-    text-shadow:0 0 10px var(--fucsia),0 0 30px var(--fucsia),0 0 60px var(--fucsia);
-    animation:neonFlicker 3s infinite;
-    margin-bottom:.5rem; display:block;
-  }
-  .neon-text-2 {
-    font-family:var(--font-display); font-style:italic;
-    font-size:2.5rem; font-weight:700; line-height:1;
-    color:rgba(255,255,255,.9);
-    text-shadow:0 0 10px rgba(255,255,255,.5);
-    display:block; margin-bottom:1.5rem;
-  }
-  @keyframes neonFlicker {
-    0%,18%,20%,50%,52%,100% { opacity:1; }
-    19%,51% { opacity:.6; }
-  }
-  .mirror-frame {
-    width:180px; height:180px; margin:0 auto 1.5rem;
-    border:6px solid rgba(255,255,255,.9);
-    border-radius:50%; background:rgba(255,255,255,.05);
-    display:flex; align-items:center; justify-content:center;
-    box-shadow:0 0 0 12px rgba(255,255,255,.05),inset 0 0 40px rgba(233,30,140,.1),0 4px 24px rgba(0,0,0,.4);
-    font-size:4rem;
-  }
-  .nosotros-stats { display:grid; grid-template-columns:1fr 1fr; gap:.75rem; margin-top:1.5rem; }
-  .n-stat { background:rgba(255,255,255,.05); border-radius:10px; padding:.85rem; text-align:center; border:1px solid rgba(255,255,255,.07); }
-  .n-stat-n { font-family:var(--font-display); font-size:1.8rem; font-weight:700; color:var(--fucsia); display:block; line-height:1; }
-  .n-stat-l { font-size:.7rem; color:rgba(255,255,255,.4); letter-spacing:1px; text-transform:uppercase; }
-  @media(max-width:700px){ .nosotros-grid { grid-template-columns:1fr; } }
+  .nosotros-visual { background:linear-gradient(135deg,var(--negro) 0%,var(--negro-suave) 100%); border-radius:20px; overflow:hidden; border:1px solid rgba(233,30,140,.15); box-shadow:0 20px 60px rgba(233,30,140,.12); }
+  .nosotros-img { width:100%; height:300px; object-fit:cover; display:block; }
+  .nosotros-img-info { padding:1.5rem; text-align:center; }
+  .neon-text { font-family:var(--font-display); font-style:italic; font-size:2.5rem; font-weight:900; line-height:1; color:var(--fucsia); text-shadow:0 0 10px var(--fucsia),0 0 30px var(--fucsia),0 0 60px var(--fucsia); animation:neonFlicker 3s infinite; margin-bottom:.3rem; display:block; }
+  @keyframes neonFlicker { 0%,18%,20%,50%,52%,100%{opacity:1} 19%,51%{opacity:.6} }
+  .nosotros-stats { display:grid; grid-template-columns:1fr 1fr; gap:.6rem; margin-top:1rem; }
+  .n-stat { background:rgba(255,255,255,.05); border-radius:8px; padding:.75rem; text-align:center; border:1px solid rgba(255,255,255,.06); }
+  .n-stat-n { font-family:var(--font-display); font-size:1.6rem; font-weight:700; color:var(--fucsia); display:block; line-height:1; }
+  .n-stat-l { font-size:.65rem; color:rgba(255,255,255,.38); letter-spacing:1px; text-transform:uppercase; }
+  @media(max-width:700px){ .nosotros-grid{grid-template-columns:1fr} }
 
-  /* ── PRECIOS ── */
+  /* PRECIOS */
   #precios { background:var(--gris-claro); }
-  .precios-intro { font-size:.95rem; color:var(--texto-suave); margin-bottom:2.5rem; line-height:1.75; max-width:560px; }
+  .precios-intro { font-size:.93rem; color:var(--texto-suave); margin-bottom:2.5rem; line-height:1.75; max-width:540px; }
   .precios-tabs { display:flex; gap:.75rem; margin-bottom:2rem; flex-wrap:wrap; }
   .precio-seccion { display:none; }
   .precio-seccion.activa { display:block; }
-  .precio-seccion-titulo {
-    font-family:var(--font-display); font-style:italic; font-size:1.3rem;
-    font-weight:700; color:var(--texto); margin-bottom:1.5rem;
-    display:flex; align-items:center; gap:.75rem;
-  }
-  .precios-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.25rem; }
-  .plan {
-    background:var(--blanco); border:1px solid var(--gris-medio);
-    border-radius:16px; padding:2rem; position:relative;
-    transition:transform .2s,box-shadow .2s;
-  }
+  .precio-seccion-titulo { font-family:var(--font-display); font-style:italic; font-size:1.25rem; font-weight:700; color:var(--texto); margin-bottom:1.5rem; display:flex; align-items:center; gap:.75rem; }
+  .precios-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1.25rem; }
+  .plan { background:var(--blanco); border:1px solid var(--gris-medio); border-radius:16px; padding:1.85rem; position:relative; transition:transform .2s,box-shadow .2s; }
   .plan:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.08); }
   .plan.destacado { border:2px solid var(--fucsia); transform:scale(1.04); }
   .plan.destacado:hover { transform:scale(1.04) translateY(-4px); }
-  .plan-badge {
-    position:absolute; top:-13px; left:50%; transform:translateX(-50%);
-    background:linear-gradient(135deg,var(--fucsia),var(--violeta));
-    color:#fff; font-size:.68rem; font-weight:700; letter-spacing:2px;
-    text-transform:uppercase; padding:.22rem .9rem; border-radius:50px; white-space:nowrap;
-  }
-  .plan-nombre { font-weight:700; font-size:1rem; color:var(--texto); margin-bottom:.85rem; }
+  .plan-badge { position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:linear-gradient(135deg,var(--fucsia),var(--violeta)); color:#fff; font-size:.66rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:.2rem .9rem; border-radius:50px; white-space:nowrap; }
+  .plan-nombre { font-weight:700; font-size:.98rem; color:var(--texto); margin-bottom:.85rem; }
   .plan-precio { font-family:var(--font-display); font-size:2.8rem; font-weight:700; line-height:1; margin-bottom:.2rem; color:var(--texto); }
   .plan-precio span { font-size:1.4rem; color:var(--texto-suave); }
-  .plan-periodo { font-size:.8rem; color:var(--texto-suave); margin-bottom:1.25rem; }
+  .plan-periodo { font-size:.78rem; color:var(--texto-suave); margin-bottom:1.25rem; }
   .plan-features { list-style:none; display:flex; flex-direction:column; gap:.5rem; margin-bottom:1.5rem; }
-  .plan-features li { font-size:.88rem; color:var(--texto-suave); display:flex; align-items:center; gap:.55rem; }
-  .plan-features li::before { content:'✦'; color:var(--fucsia); font-size:.55rem; flex-shrink:0; }
-  .btn-plan {
-    display:block; width:100%; text-align:center; padding:.8rem;
-    border-radius:50px; font-size:.85rem; font-weight:600; letter-spacing:1px;
-    text-transform:uppercase; cursor:pointer; border:none; transition:all .2s;
-    text-decoration:none;
-  }
+  .plan-features li { font-size:.87rem; color:var(--texto-suave); display:flex; align-items:center; gap:.55rem; }
+  .plan-features li::before { content:'✦'; color:var(--fucsia); font-size:.52rem; flex-shrink:0; }
+  .btn-plan { display:block; width:100%; text-align:center; padding:.8rem; border-radius:50px; font-size:.83rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; cursor:pointer; border:none; transition:all .2s; text-decoration:none; }
   .btn-outline { border:1.5px solid var(--fucsia); color:var(--fucsia); background:transparent; }
   .btn-outline:hover { background:var(--fucsia-pale); }
   .btn-solid { background:linear-gradient(135deg,var(--fucsia),var(--violeta)); color:#fff; box-shadow:0 4px 16px rgba(233,30,140,.3); }
-  .btn-solid:hover { box-shadow:0 8px 24px rgba(233,30,140,.4); transform:translateY(-1px); }
-  .precios-nota { margin-top:1.5rem; text-align:center; font-size:.8rem; color:var(--texto-suave); font-style:italic; }
+  .btn-solid:hover { box-shadow:0 8px 24px rgba(233,30,140,.4); }
+  .precios-nota { margin-top:1.5rem; text-align:center; font-size:.78rem; color:var(--texto-suave); font-style:italic; }
 
-  /* ── SPONSORS ── */
+  /* SPONSORS */
   #sponsors { background:var(--blanco); border-top:1px solid var(--gris-medio); }
-  .sponsors-sub { font-size:.95rem; color:var(--texto-suave); margin-bottom:2.5rem; max-width:480px; }
+  .sponsors-sub { font-size:.93rem; color:var(--texto-suave); margin-bottom:2.5rem; max-width:480px; }
   .sponsors-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.25rem; }
   .sponsor-card { display:flex; flex-direction:column; align-items:center; text-align:center; padding:1.75rem 1.25rem; border:1px solid var(--gris-medio); border-radius:14px; text-decoration:none; color:var(--texto); transition:transform .2s,box-shadow .2s,border-color .2s; }
   .sponsor-card:hover { transform:translateY(-3px); box-shadow:0 10px 24px rgba(0,0,0,.07); border-color:var(--fucsia); }
-  .sponsor-logo { width:76px; height:76px; border-radius:50%; background:var(--gris-claro); border:1px solid var(--gris-medio); display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-size:1.4rem; font-weight:700; color:var(--fucsia); margin-bottom:.9rem; overflow:hidden; flex-shrink:0; }
+  .sponsor-logo { width:76px; height:76px; border-radius:50%; background:var(--gris-claro); border:1px solid var(--gris-medio); display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-size:1.4rem; font-weight:700; color:var(--fucsia); margin-bottom:.9rem; overflow:hidden; }
   .sponsor-logo img { width:100%; height:100%; object-fit:contain; padding:8px; }
   .sponsor-nombre { font-weight:700; font-size:1rem; margin-bottom:.3rem; }
   .sponsor-desc { font-size:.82rem; color:var(--texto-suave); line-height:1.55; }
@@ -412,80 +208,65 @@
   .sponsors-placeholder p { font-size:.9rem; color:var(--texto-suave); line-height:1.75; }
   .sponsors-placeholder strong { color:var(--fucsia); }
 
-  /* ── CONTACTO / FORMULARIO ── */
+  /* CONTACTO */
   #contacto { background:var(--negro); }
   #contacto .section-label { color:var(--rosa); }
   #contacto .section-title { color:var(--blanco); }
   .contacto-layout { display:grid; grid-template-columns:1fr 1.3fr; gap:4rem; align-items:start; }
-  .contacto-info p { font-size:1rem; color:rgba(255,255,255,.6); line-height:1.8; margin-bottom:1.5rem; }
+  .contacto-info p { font-size:1rem; color:rgba(255,255,255,.58); line-height:1.8; margin-bottom:1.5rem; }
   .contacto-pasos { display:flex; flex-direction:column; gap:.85rem; }
-  .c-paso { display:flex; align-items:flex-start; gap:.75rem; font-size:.9rem; color:rgba(255,255,255,.55); line-height:1.55; }
-  .c-num { width:28px; height:28px; background:linear-gradient(135deg,var(--fucsia),var(--violeta)); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:700; flex-shrink:0; }
+  .c-paso { display:flex; align-items:flex-start; gap:.75rem; font-size:.88rem; color:rgba(255,255,255,.52); line-height:1.55; }
+  .c-num { width:28px; height:28px; background:linear-gradient(135deg,var(--fucsia),var(--violeta)); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.78rem; font-weight:700; flex-shrink:0; }
   .contacto-form { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:2.25rem; backdrop-filter:blur(4px); }
   .form-row { display:grid; grid-template-columns:1fr 1fr; gap:.85rem; }
   .fg { display:flex; flex-direction:column; gap:.35rem; margin-bottom:.85rem; }
-  .fg label { font-size:.7rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.4); }
-  .fg input,.fg select,.fg textarea {
-    padding:.72rem 1rem; border:1px solid rgba(255,255,255,.1); border-radius:10px;
-    font-family:var(--font-body); font-size:.93rem; color:#fff;
-    background:rgba(255,255,255,.06); outline:none; width:100%;
-    transition:border-color .2s,box-shadow .2s;
-  }
-  .fg input::placeholder,.fg textarea::placeholder { color:rgba(255,255,255,.25); }
+  .fg label { font-size:.68rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.38); }
+  .fg input,.fg select,.fg textarea { padding:.72rem 1rem; border:1px solid rgba(255,255,255,.1); border-radius:10px; font-family:var(--font-body); font-size:.93rem; color:#fff; background:rgba(255,255,255,.06); outline:none; width:100%; transition:border-color .2s,box-shadow .2s; }
+  .fg input::placeholder,.fg textarea::placeholder { color:rgba(255,255,255,.22); }
   .fg select option { background:#1A0A2E; color:#fff; }
   .fg input:focus,.fg select:focus,.fg textarea:focus { border-color:var(--fucsia); box-shadow:0 0 0 3px rgba(233,30,140,.15); }
   .fg textarea { resize:vertical; min-height:90px; }
-  .btn-form {
-    width:100%; padding:1rem; border:none; border-radius:50px; cursor:pointer;
-    background:linear-gradient(135deg,var(--fucsia),var(--violeta));
-    color:#fff; font-family:var(--font-body); font-size:1rem; font-weight:700;
-    letter-spacing:1px; text-transform:uppercase;
-    box-shadow:0 4px 24px rgba(233,30,140,.4);
-    transition:box-shadow .2s,transform .2s; margin-top:.25rem;
-  }
+  .btn-form { width:100%; padding:1rem; border:none; border-radius:50px; cursor:pointer; background:linear-gradient(135deg,var(--fucsia),var(--violeta)); color:#fff; font-family:var(--font-body); font-size:1rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; box-shadow:0 4px 24px rgba(233,30,140,.4); transition:box-shadow .2s,transform .2s; margin-top:.25rem; }
   .btn-form:hover { box-shadow:0 8px 32px rgba(233,30,140,.5); transform:translateY(-1px); }
-  .form-nota { font-size:.75rem; color:rgba(255,255,255,.3); text-align:center; margin-top:.75rem; }
-  .alerta { padding:.9rem 1.1rem; border-radius:10px; font-size:.9rem; font-weight:500; margin-bottom:.9rem; display:none; }
+  .form-nota { font-size:.73rem; color:rgba(255,255,255,.28); text-align:center; margin-top:.75rem; }
+  .alerta { padding:.9rem 1.1rem; border-radius:10px; font-size:.88rem; font-weight:500; margin-bottom:.9rem; display:none; }
   .alerta.ok { background:rgba(34,197,94,.15); color:#4ade80; border:1px solid rgba(34,197,94,.3); }
   .alerta.err { background:rgba(239,68,68,.15); color:#f87171; border:1px solid rgba(239,68,68,.3); }
   @media(max-width:720px){ .contacto-layout{grid-template-columns:1fr} .form-row{grid-template-columns:1fr} }
 
-  /* ── FOOTER ── */
+  /* FOOTER */
   footer { background:#06060A; color:rgba(255,255,255,.45); padding:3rem 1.5rem; text-align:center; position:relative; z-index:1; }
-  .footer-logo-img { width:80px; height:80px; object-fit:contain; margin:0 auto .75rem; display:block; filter:drop-shadow(0 0 16px rgba(233,30,140,.5)); }
+  .footer-logo-img { width:90px; height:90px; object-fit:contain; margin:0 auto .75rem; display:block; filter:drop-shadow(0 0 16px rgba(233,30,140,.5)); }
   .footer-nombre { font-family:var(--font-display); font-style:italic; font-size:1.8rem; font-weight:900; color:#fff; margin-bottom:.35rem; }
   .footer-nombre span { color:var(--fucsia); }
-  .footer-tag { font-size:.7rem; letter-spacing:2px; text-transform:uppercase; margin-bottom:2rem; }
+  .footer-tag { font-size:.68rem; letter-spacing:2px; text-transform:uppercase; margin-bottom:2rem; }
   .footer-sponsors-wrap { margin-bottom:2rem; display:none; }
   .footer-sponsors-label { font-size:.6rem; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.2); margin-bottom:.75rem; font-weight:600; }
   .footer-sponsors-row { display:flex; flex-wrap:wrap; justify-content:center; gap:.75rem; }
-  .footer-ig { display:inline-flex; align-items:center; gap:.4rem; color:rgba(255,255,255,.35); text-decoration:none; font-size:.78rem; font-weight:500; letter-spacing:1px; margin-bottom:1.5rem; transition:color .2s; }
+  .footer-ig { display:inline-flex; align-items:center; gap:.4rem; color:rgba(255,255,255,.35); text-decoration:none; font-size:.76rem; font-weight:500; letter-spacing:1px; margin-bottom:1.5rem; transition:color .2s; }
   .footer-ig:hover { color:var(--fucsia); }
   .footer-links { display:flex; justify-content:center; gap:1.75rem; list-style:none; margin-bottom:2rem; flex-wrap:wrap; }
-  .footer-links a { color:rgba(255,255,255,.32); text-decoration:none; font-size:.75rem; font-weight:500; letter-spacing:1px; text-transform:uppercase; transition:color .2s; }
+  .footer-links a { color:rgba(255,255,255,.3); text-decoration:none; font-size:.73rem; font-weight:500; letter-spacing:1px; text-transform:uppercase; transition:color .2s; }
   .footer-links a:hover { color:#fff; }
-  .footer-copy { font-size:.68rem; color:rgba(255,255,255,.18); }
+  .footer-copy { font-size:.67rem; color:rgba(255,255,255,.16); }
 
-  /* ── WhatsApp FAB ── */
+  /* WhatsApp */
   .wa-fab { position:fixed; bottom:1.5rem; right:1.5rem; background:#25D366; color:#fff; border-radius:50%; width:56px; height:56px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 4px 18px rgba(37,211,102,.45); z-index:90; text-decoration:none; transition:transform .2s; }
   .wa-fab:hover { transform:scale(1.1); }
 
-  /* ── ANIMACIONES ── */
-  .fade { opacity:0; transform:translateY(18px); transition:opacity .6s,transform .6s; }
+  /* Animaciones */
+  .fade { opacity:0; transform:translateY(16px); transition:opacity .6s,transform .6s; }
   .fade.visible { opacity:1; transform:translateY(0); }
   .d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s}
 </style>
 </head>
 <body>
 
-<!-- Partículas -->
 <div class="sparkles" id="sparkles"></div>
 
 <!-- NAV -->
 <nav>
-  <a href="#inicio" class="nav-logo">
-    ✦ <span>Glitter</span><span class="glow">&nbsp;Bar</span>
-  </a>
+  <a href="#inicio" class="nav-logo">✦ Glitter<span class="glow">&nbsp;Bar</span></a>
   <ul class="nav-links">
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#galeria">Galería</a></li>
@@ -507,11 +288,8 @@
   <div class="hero-ring hero-ring-3"></div>
   <div class="hero-content">
     <div class="hero-badge">Stand de Glitters & Spa de Nenas · Corrientes</div>
-    <!-- REEMPLAZÁ src con tu logo: <img src="logo.png" ...> -->
-    <div style="font-size:5rem;margin:0 auto 1.5rem;display:block;filter:drop-shadow(0 0 30px rgba(233,30,140,.7));animation:logoPulse 3s ease-in-out infinite;">✨</div>
-    <h1 class="hero-title">
-      Glitter<br><span class="bar">Bar</span>
-    </h1>
+    <img src="logo-glitterbar.png" alt="Glitter Bar" class="hero-logo">
+    <h1 class="hero-title">Glitter<br><span class="bar">Bar</span></h1>
     <p class="hero-sub">Corrientes · Argentina</p>
     <p class="hero-slogan">Brillos, glitters, tatuajes y magia para tu evento. Hacemos que cada celebración sea única e irrepetible.</p>
     <div class="hero-btns">
@@ -538,13 +316,15 @@
     <p class="servicios-intro">Dos experiencias únicas bajo una misma marca. Elegí la que mejor se adapta a tu evento y hacelo brillar.</p>
     <div class="servicios-grid">
 
-      <!-- SERVICIO 1: STAND GLITTER BAR -->
       <div class="servicio-card fade">
-        <div class="servicio-header">
-          <div class="servicio-num">01</div>
-          <span class="servicio-icon">✨</span>
-          <div class="servicio-nombre">Stand<br>Glitter Bar</div>
-          <span class="servicio-tag">Bodas · 15 años · Eventos</span>
+        <div style="position:relative;">
+          <img src="foto-stand-1.png" alt="Stand Glitter Bar" class="servicio-img">
+          <div class="servicio-img-overlay">
+            <div class="servicio-num">01</div>
+            <span class="servicio-icon">✨</span>
+            <div class="servicio-nombre">Stand<br>Glitter Bar</div>
+            <span class="servicio-tag">Bodas · 15 años · Eventos</span>
+          </div>
         </div>
         <div class="servicio-body">
           <p class="servicio-desc">Nuestro stand llega a tu evento con todo: espejo hollywoodense, colección completa de glitters, brillos, tatuajes temporales, piedras y más. Una experiencia que tus invitadas no van a olvidar.</p>
@@ -559,16 +339,18 @@
         </div>
       </div>
 
-      <!-- SERVICIO 2: SPA DE NENAS -->
       <div class="servicio-card fade d1">
-        <div class="servicio-header">
-          <div class="servicio-num">02</div>
-          <span class="servicio-icon">👑</span>
-          <div class="servicio-nombre">Spa de<br>Nenas</div>
-          <span class="servicio-tag">Cumpleaños infantiles</span>
+        <div style="position:relative;">
+          <img src="foto-spa-1.png" alt="Spa de Nenas" class="servicio-img">
+          <div class="servicio-img-overlay">
+            <div class="servicio-num">02</div>
+            <span class="servicio-icon">👑</span>
+            <div class="servicio-nombre">Spa de<br>Nenas</div>
+            <span class="servicio-tag">Cumpleaños infantiles</span>
+          </div>
         </div>
         <div class="servicio-body">
-          <p class="servicio-desc">Una experiencia de princesas para las más chiquitas. Mesa completa de spa con bowls, espejos, esmaltes, accesorios y todo para que las nenas se sientan las reinas de la fiesta.</p>
+          <p class="servicio-desc">Una experiencia de princesas para las más chiquitas. Mesa completa de spa con bowls, espejos, esmaltes y todo para que las nenas se sientan las reinas de la fiesta.</p>
           <ul class="servicio-items">
             <li>Mesa spa completa para todas las nenas</li>
             <li>Bowls, espejos, esmaltes y accesorios</li>
@@ -591,52 +373,46 @@
     <h2 class="section-title" style="color:#fff">Galería</h2>
     <div class="galeria-tabs">
       <button class="tab-btn active" onclick="cambiarTab('todos',this)">Todos</button>
-      <button class="tab-btn" onclick="cambiarTab('stand',this)">Stand Glitter Bar</button>
-      <button class="tab-btn" onclick="cambiarTab('spa',this)">Spa de Nenas</button>
+      <button class="tab-btn" onclick="cambiarTab('stand',this)">✨ Stand Glitter Bar</button>
+      <button class="tab-btn" onclick="cambiarTab('spa',this)">👑 Spa de Nenas</button>
     </div>
-
-    <!-- 
-      INSTRUCCIONES PARA AGREGAR FOTOS:
-      1. Guardá las fotos en tu carpeta con nombres como: foto1.jpg, foto2.jpg, etc.
-      2. Reemplazá los div.galeria-placeholder por:
-         <img src="foto1.jpg" alt="descripción">
-      3. El atributo data-cat puede ser "stand" o "spa" para filtrar
-    -->
     <div class="galeria-grid" id="galeria-grid">
 
-      <div class="galeria-item" data-cat="stand">
-        <div class="galeria-placeholder" style="background:linear-gradient(135deg,#2D0A40,#0D0D12)">
-          <span>✨</span><p>Stand Glitter Bar<br>Agregá tu foto</p>
-        </div>
+      <!-- STAND GLITTER BAR -->
+      <div class="galeria-item fade" data-cat="stand">
+        <img src="foto-stand-1.png" alt="Stand Glitter Bar con cartel neon">
+        <div class="galeria-overlay"></div>
+        <div class="galeria-label">Stand Glitter Bar</div>
       </div>
-      <div class="galeria-item" data-cat="spa">
-        <div class="galeria-placeholder" style="background:linear-gradient(135deg,#FF6EB4,#FF9EC7)">
-          <span>👑</span><p>Spa de Nenas<br>Agregá tu foto</p>
-        </div>
+      <div class="galeria-item fade d1" data-cat="stand">
+        <img src="foto-stand-2.png" alt="Stand completo con glitters">
+        <div class="galeria-overlay"></div>
+        <div class="galeria-label">Colección completa</div>
       </div>
-      <div class="galeria-item" data-cat="stand">
-        <div class="galeria-placeholder" style="background:linear-gradient(135deg,#7B2FBE,#E91E8C)">
-          <span>💎</span><p>Stand Glitter Bar<br>Agregá tu foto</p>
-        </div>
+      <div class="galeria-item fade d2" data-cat="stand">
+        <img src="foto-stand-3.png" alt="Pared de lentejuelas Glitter Bar">
+        <div class="galeria-overlay"></div>
+        <div class="galeria-label">Backdrop exclusivo</div>
       </div>
-      <div class="galeria-item" data-cat="spa">
-        <div class="galeria-placeholder" style="background:linear-gradient(135deg,#FF9EC7,#C084FC)">
-          <span>🌸</span><p>Spa de Nenas<br>Agregá tu foto</p>
-        </div>
+
+      <!-- SPA DE NENAS -->
+      <div class="galeria-item fade" data-cat="spa">
+        <img src="foto-spa-1.png" alt="Mesa spa de nenas lista">
+        <div class="galeria-overlay"></div>
+        <div class="galeria-label">Spa de Nenas</div>
       </div>
-      <div class="galeria-item" data-cat="stand">
-        <div class="galeria-placeholder" style="background:linear-gradient(135deg,#D4AF37,#E91E8C)">
-          <span>⭐</span><p>Stand Glitter Bar<br>Agregá tu foto</p>
-        </div>
+      <div class="galeria-item fade d1" data-cat="spa">
+        <img src="foto-spa-2.png" alt="Mesa spa con backdrop">
+        <div class="galeria-overlay"></div>
+        <div class="galeria-label">Decoración completa</div>
       </div>
-      <div class="galeria-item" data-cat="spa">
-        <div class="galeria-placeholder" style="background:linear-gradient(135deg,#C084FC,#FF6EB4)">
-          <span>✨</span><p>Spa de Nenas<br>Agregá tu foto</p>
-        </div>
+      <div class="galeria-item fade d2" data-cat="spa">
+        <img src="foto-spa-3.png" alt="Nenas disfrutando el spa">
+        <div class="galeria-overlay"></div>
+        <div class="galeria-label">Momento mágico</div>
       </div>
 
     </div>
-    <p class="galeria-nota">* Reemplazá los placeholders con tus fotos reales. Instrucciones en el código.</p>
   </div>
 </section>
 
@@ -658,14 +434,15 @@
       </div>
       <div class="fade d2">
         <div class="nosotros-visual">
-          <span class="neon-text">Glitter</span>
-          <span class="neon-text-2">Bar ✦</span>
-          <div class="mirror-frame">🪞</div>
-          <div class="nosotros-stats">
-            <div class="n-stat"><span class="n-stat-n" id="cnt2">0</span><span class="n-stat-l">Eventos</span></div>
-            <div class="n-stat"><span class="n-stat-n">2</span><span class="n-stat-l">Servicios</span></div>
-            <div class="n-stat"><span class="n-stat-n">💫</span><span class="n-stat-l">Magia</span></div>
-            <div class="n-stat"><span class="n-stat-n">❤️</span><span class="n-stat-l">Pasión</span></div>
+          <img src="foto-stand-1.png" alt="Glitter Bar en acción" class="nosotros-img">
+          <div class="nosotros-img-info">
+            <span class="neon-text">Glitter Bar ✦</span>
+            <div class="nosotros-stats">
+              <div class="n-stat"><span class="n-stat-n" id="cnt2">0</span><span class="n-stat-l">Eventos</span></div>
+              <div class="n-stat"><span class="n-stat-n">2</span><span class="n-stat-l">Servicios</span></div>
+              <div class="n-stat"><span class="n-stat-n">💫</span><span class="n-stat-l">Magia</span></div>
+              <div class="n-stat"><span class="n-stat-n">❤️</span><span class="n-stat-l">Pasión</span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -679,7 +456,6 @@
     <div class="section-label">Inversión</div>
     <h2 class="section-title">Precios y paquetes</h2>
     <p class="precios-intro">Cada evento es único. Estos son precios de referencia — escribinos para un presupuesto personalizado según tu fecha, duración y cantidad de personas.</p>
-
     <div class="precios-tabs">
       <button class="tab-btn active" onclick="cambiarPrecio('stand',this)">✨ Stand Glitter Bar</button>
       <button class="tab-btn" onclick="cambiarPrecio('spa',this)">👑 Spa de Nenas</button>
@@ -696,7 +472,6 @@
             <li>Stand completo montado</li>
             <li>Glitters y brillos básicos</li>
             <li>Tatuajes temporales</li>
-            <li>Hasta X personas</li>
           </ul>
           <a href="#contacto" class="btn-plan btn-outline">Consultar</a>
         </div>
@@ -704,25 +479,23 @@
           <div class="plan-badge">Más elegido</div>
           <div class="plan-nombre">Paquete Premium</div>
           <div class="plan-precio"><span>$</span>XXXX</div>
-          <div class="plan-periodo">hasta 3 horas · con todas las opciones</div>
+          <div class="plan-periodo">hasta 3 horas · todas las opciones</div>
           <ul class="plan-features">
-            <li>Stand completo + espejo hollywoodense</li>
+            <li>Stand + espejo hollywoodense</li>
             <li>Colección completa de glitters</li>
             <li>Tatuajes + piedras + accesorios</li>
-            <li>Hasta X personas</li>
-            <li>Foto en el stand incluida</li>
+            <li>Pared de lentejuelas incluida</li>
           </ul>
           <a href="#contacto" class="btn-plan btn-solid">Presupuestar</a>
         </div>
         <div class="plan fade d2">
           <div class="plan-nombre">Paquete VIP</div>
           <div class="plan-precio"><span>$</span>XXXX</div>
-          <div class="plan-periodo">sin límite de tiempo · experiencia completa</div>
+          <div class="plan-periodo">toda la noche · sin límites</div>
           <ul class="plan-features">
-            <li>Todo del Premium</li>
+            <li>Todo el Premium</li>
             <li>Sin límite de personas</li>
-            <li>Duración toda la noche</li>
-            <li>Coordinación personalizada</li>
+            <li>Coordinación exclusiva</li>
           </ul>
           <a href="#contacto" class="btn-plan btn-outline">Consultar</a>
         </div>
@@ -738,9 +511,8 @@
           <div class="plan-periodo">por evento · consultar cantidad</div>
           <ul class="plan-features">
             <li>Mesa spa completa</li>
-            <li>Bowls y espejos</li>
-            <li>Esmaltes y accesorios</li>
-            <li>Hasta X nenas</li>
+            <li>Bowls, espejos y esmaltes</li>
+            <li>Accesorios básicos</li>
           </ul>
           <a href="#contacto" class="btn-plan btn-outline">Consultar</a>
         </div>
@@ -754,7 +526,6 @@
             <li>Maquillaje infantil incluido</li>
             <li>Bowls, espejos, esmaltes</li>
             <li>Accesorios y sorpresas</li>
-            <li>Hasta X nenas</li>
           </ul>
           <a href="#contacto" class="btn-plan btn-solid">Presupuestar</a>
         </div>
@@ -763,8 +534,7 @@
           <div class="plan-precio"><span>$</span>XXXX</div>
           <div class="plan-periodo">la experiencia más completa</div>
           <ul class="plan-features">
-            <li>Todo del Premium</li>
-            <li>Sin límite de nenas</li>
+            <li>Todo el Premium</li>
             <li>Decoración personalizada</li>
             <li>Coordinación exclusiva</li>
           </ul>
@@ -773,7 +543,7 @@
       </div>
     </div>
 
-    <p class="precios-nota">* Precios de referencia. El presupuesto final depende de la fecha, duración y cantidad de invitadas. Escribinos para una cotización exacta.</p>
+    <p class="precios-nota">* Precios de referencia. El presupuesto final depende de la fecha, duración y cantidad de invitadas.</p>
   </div>
 </section>
 
@@ -860,21 +630,17 @@
 
 <!-- FOOTER -->
 <footer>
-  <!-- REEMPLAZÁ con tu logo: <img src="logo.png" class="footer-logo-img"> -->
-  <div style="font-size:3rem;margin-bottom:.5rem;filter:drop-shadow(0 0 16px rgba(233,30,140,.5))">✨</div>
+  <img src="logo-glitterbar.png" alt="Glitter Bar" class="footer-logo-img">
   <div class="footer-nombre">Glitter <span>Bar</span></div>
   <div class="footer-tag">Stand de Glitters & Spa de Nenas · Corrientes, Argentina</div>
-
   <div class="footer-sponsors-wrap" id="footer-sponsors-wrap">
     <div class="footer-sponsors-label">Sponsors</div>
     <div class="footer-sponsors-row" id="footer-sponsors-row"></div>
   </div>
-
   <a href="https://instagram.com/glitter.bar1" target="_blank" class="footer-ig">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
     @glitter.bar1
   </a>
-
   <ul class="footer-links">
     <li><a href="#inicio">Inicio</a></li>
     <li><a href="#servicios">Servicios</a></li>
@@ -888,50 +654,33 @@
 <!-- WhatsApp FAB -->
 <a href="https://wa.me/543795004932?text=Hola!%20Vi%20la%20web%20de%20Glitter%20Bar%20y%20quiero%20consultar%20por%20un%20evento%20%E2%9C%A8"
    class="wa-fab" target="_blank" title="Escribinos por WhatsApp">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <script>
-// ════════════════════════════
-// SPONSORS — agregá acá
-// ════════════════════════════
-const SPONSORS = [
-  // { nombre:"Nombre", desc:"Descripción.", tag:"Categoría", logo:"", link:"https://" },
-];
+const SPONSORS = [];
 
-// ── Partículas ──
+// Partículas
 const sparkles = document.getElementById('sparkles');
 for (let i = 0; i < 25; i++) {
   const s = document.createElement('div');
   s.className = 'sparkle';
   const size = Math.random() * 6 + 2;
   const colors = ['#E91E8C','#7B2FBE','#D4AF37','#F7A8D0','#fff'];
-  s.style.cssText = `
-    width:${size}px; height:${size}px;
-    left:${Math.random()*100}%;
-    background:${colors[Math.floor(Math.random()*colors.length)]};
-    animation-duration:${Math.random()*15+8}s;
-    animation-delay:${Math.random()*10}s;
-  `;
+  s.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;background:${colors[Math.floor(Math.random()*colors.length)]};animation-duration:${Math.random()*15+8}s;animation-delay:${Math.random()*10}s;`;
   sparkles.appendChild(s);
 }
 
-// ── Tabs galería ──
+// Tabs galería
 function cambiarTab(cat, btn) {
   document.querySelectorAll('.galeria-tabs .tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   document.querySelectorAll('.galeria-item').forEach(item => {
-    if (cat === 'todos' || item.dataset.cat === cat) {
-      item.style.display = 'block';
-    } else {
-      item.style.display = 'none';
-    }
+    item.style.display = (cat === 'todos' || item.dataset.cat === cat) ? 'block' : 'none';
   });
 }
 
-// ── Tabs precios ──
+// Tabs precios
 function cambiarPrecio(tipo, btn) {
   document.querySelectorAll('.precios-tabs .tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
@@ -939,8 +688,8 @@ function cambiarPrecio(tipo, btn) {
   document.getElementById(`precio-${tipo}`).classList.add('activa');
 }
 
-// ── Sponsors ──
 document.addEventListener('DOMContentLoaded', () => {
+  // Sponsors
   const grid = document.getElementById('sponsors-grid');
   if (SPONSORS.length > 0) {
     grid.innerHTML = SPONSORS.map(s => {
@@ -954,22 +703,14 @@ document.addEventListener('DOMContentLoaded', () => {
       </a>`;
     }).join('');
   }
-
   const fWrap = document.getElementById('footer-sponsors-wrap');
   const fRow  = document.getElementById('footer-sponsors-row');
   if (SPONSORS.length > 0) {
     fWrap.style.display = 'block';
     fRow.innerHTML = SPONSORS.map(s => {
       const ini = s.nombre.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
-      const logo = s.logo
-        ? `<img src="${s.logo}" alt="${s.nombre}" style="width:100%;height:100%;object-fit:contain;padding:6px">`
-        : `<span style="font-size:.9rem;font-weight:700;color:#E91E8C">${ini}</span>`;
-      return `<a href="${s.link}" target="_blank" rel="noopener"
-        title="${s.nombre}" style="display:flex;flex-direction:column;align-items:center;gap:.4rem;text-decoration:none;opacity:.6;transition:opacity .2s"
-        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.6'">
-        <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;overflow:hidden">${logo}</div>
-        <span style="font-size:.62rem;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.35)">${s.nombre}</span>
-      </a>`;
+      const logo = s.logo ? `<img src="${s.logo}" alt="${s.nombre}" style="width:100%;height:100%;object-fit:contain;padding:6px">` : `<span style="font-size:.9rem;font-weight:700;color:#E91E8C">${ini}</span>`;
+      return `<a href="${s.link}" target="_blank" rel="noopener" title="${s.nombre}" style="display:flex;flex-direction:column;align-items:center;gap:.4rem;text-decoration:none;opacity:.6;transition:opacity .2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.6'"><div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;overflow:hidden">${logo}</div><span style="font-size:.62rem;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.35)">${s.nombre}</span></a>`;
     }).join('');
   }
 
@@ -996,7 +737,7 @@ function animCount(id, target) {
   const t = setInterval(() => { v++; el.textContent = Math.min(v,target); if(v>=target) clearInterval(t); }, 35);
 }
 
-// ── Formulario ──
+// Formulario
 document.getElementById('form-contacto').addEventListener('submit', function(e) {
   e.preventDefault();
   const nombre     = document.getElementById('nombre').value.trim();
@@ -1013,8 +754,7 @@ document.getElementById('form-contacto').addEventListener('submit', function(e) 
   }
 
   const msg = [
-    `✨ *Nueva consulta — Glitter Bar*`,
-    ``,
+    `✨ *Nueva consulta — Glitter Bar*`,``,
     `👤 *Nombre:* ${nombre}`,
     `📱 *Teléfono:* ${telefono}`,
     `✦ *Servicio:* ${servicio}`,
@@ -1022,8 +762,7 @@ document.getElementById('form-contacto').addEventListener('submit', function(e) 
     fecha    ? `📅 *Fecha:* ${fecha}` : null,
     cantidad ? `👥 *Cantidad estimada:* ${cantidad}` : null,
     obs      ? `📝 *Detalles:* ${obs}` : null,
-    ``,
-    `_Enviado desde la web de Glitter Bar_`,
+    ``,`_Enviado desde la web de Glitter Bar_`,
   ].filter(Boolean).join('\n');
 
   window.open(`https://wa.me/543795004932?text=${encodeURIComponent(msg)}`,'_blank');
